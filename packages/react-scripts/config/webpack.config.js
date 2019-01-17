@@ -275,6 +275,10 @@ module.exports = function(webpackEnv) {
         // Support React Native Web
         // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
         'react-native': 'react-native-web',
+        // ocasta-react-scripts BEGIN : allow imports without relative paths
+        Core: path.resolve(__dirname, 'core/'),
+        Modules: path.resolve(__dirname, 'modules/'),
+        // ocasta-react-scripts END
       },
       plugins: [
         // Adds support for installing with Plug'n'Play, leading to faster installs and adding
@@ -312,12 +316,9 @@ module.exports = function(webpackEnv) {
                 formatter: require.resolve('react-dev-utils/eslintFormatter'),
                 eslintPath: require.resolve('eslint'),
                 // @remove-on-eject-begin
-                baseConfig: {
-                  extends: [require.resolve('eslint-config-react-app')],
-                  settings: { react: { version: '999.999.999' } },
-                },
-                ignore: false,
-                useEslintrc: false,
+                // ocasta-react-scripts BEGIN : enable .eslintrc config file in app
+                useEslintrc: true,
+                // ocasta-react-scripts END
                 // @remove-on-eject-end
               },
               loader: require.resolve('eslint-loader'),
