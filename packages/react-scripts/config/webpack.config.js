@@ -276,8 +276,8 @@ module.exports = function(webpackEnv) {
         // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
         'react-native': 'react-native-web',
         // ocasta-react-scripts BEGIN : allow imports without relative paths
-        Core: path.resolve(__dirname, 'core/'),
-        Modules: path.resolve(__dirname, 'modules/'),
+        Core: path.resolve(__dirname, 'src/core/'),
+        Modules: path.resolve(__dirname, 'src/modules/'),
         // ocasta-react-scripts END
       },
       plugins: [
@@ -317,7 +317,10 @@ module.exports = function(webpackEnv) {
                 eslintPath: require.resolve('eslint'),
                 // @remove-on-eject-begin
                 // ocasta-react-scripts BEGIN : enable .eslintrc config file in app
+                // put your custom .eslintrc config file in the created app root and it will be picked up by webpack for linting
                 useEslintrc: true,
+                // Loader will process and report errors only and ignore warnings if this option is set to true
+                quiet: true,
                 // ocasta-react-scripts END
                 // @remove-on-eject-end
               },

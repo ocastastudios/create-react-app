@@ -7,7 +7,7 @@ We added:
 
 To make a starter app with create-react-app and this customised config, please run:
 
-np create-react-app test-app --scripts-version ocasta-react-scripts
+npm create-react-app test-app --scripts-version ocasta-react-scripts
 
 Please refer to its documentation:
 
