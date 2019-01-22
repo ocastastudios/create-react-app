@@ -319,7 +319,15 @@ module.exports = function(webpackEnv) {
                 // put your custom .eslintrc config file in the created app root and it will be picked up by webpack for linting
                 useEslintrc: true,
                 // Loader will process and report errors only and ignore warnings if this option is set to true
-                quiet: true,
+                quiet: false,
+                // try force eslint to show all errors
+                emitError: true,
+                // https://github.com/webpack-contrib/eslint-loader
+                // If you're using hot module replacement, you may wish to enable this in development, or else updates will be skipped when there's an eslint error.
+                emitWarning: isEnvDevelopment,
+                // try to force webpack to show errrors for all files like when I configured it by hand. by default it seems to stop at first file with errors
+                failOnWarning: false,
+                failOnError: false,
                 // ocasta-react-scripts END
                 // @remove-on-eject-end
               },
