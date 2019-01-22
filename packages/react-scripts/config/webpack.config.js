@@ -327,7 +327,8 @@ module.exports = function(webpackEnv) {
                 emitWarning: isEnvDevelopment,
                 // try to force webpack to show errrors for all files like when I configured it by hand. by default it seems to stop at first file with errors
                 failOnWarning: false,
-                failOnError: false,
+                // we don't want a production build with errors but we want the errors to show while developing
+                failOnError: isEnvProduction,
                 // ocasta-react-scripts END
                 // @remove-on-eject-end
               },
