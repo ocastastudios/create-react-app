@@ -312,10 +312,11 @@ module.exports = function(webpackEnv) {
           use: [
             {
               options: {
-                formatter: require.resolve('react-dev-utils/eslintFormatter'),
+                // ocasta-react-scripts BEGIN : enable .eslintrc config file in app
+                // try disable the custom error formatter, in case it's what causes them to show file by file only
+                // formatter: require.resolve('react-dev-utils/eslintFormatter'),
                 eslintPath: require.resolve('eslint'),
                 // @remove-on-eject-begin
-                // ocasta-react-scripts BEGIN : enable .eslintrc config file in app
                 // put your custom .eslintrc config file in the created app root and it will be picked up by webpack for linting
                 useEslintrc: true,
                 // Loader will process and report errors only and ignore warnings if this option is set to true
