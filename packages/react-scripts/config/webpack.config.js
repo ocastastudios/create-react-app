@@ -338,6 +338,22 @@ module.exports = function(webpackEnv) {
           ],
           include: paths.appSrc,
         },
+        // ocasta-react-scripts BEGIN : add tslint linter with same config as eslint
+        {
+          test: /\.(ts|tsx)$/,
+          enforce: 'pre',
+          use: [
+            {
+              loader: 'tslint-loader',
+              options: {
+                // tslint errors are displayed by default as warnings
+                // set emitErrors to true to display them as errors
+                emitErrors: true,
+              }
+            },
+          ],
+        },
+        // ocasta-react-scripts END
         {
           // "oneOf" will traverse all following loaders until one will
           // match the requirements. When no loader matches it will fall

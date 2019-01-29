@@ -23,7 +23,7 @@ Our changes:
   },
 
 - remove facebook's custom formatting of the webpack console output and put back the default more verbose one. The reason for that is Facebook only showed linting errors for the last processed file so you  were forced to fix files in a specific order with no clue how long it would take to get your code up to scratch. The default webpack output shows everything that is wrong with all the files so it is more helpful to the developer: you can evaluate workload and fix errrors in order of convenience.
-- change typescript definitions path to our module ocasta-react-scrtipts
+- change typescript definitions path to our module ocasta-react-scripts
 
 To make a starter app with create-react-app and this customised config, please run:
 
