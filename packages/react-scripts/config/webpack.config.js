@@ -338,7 +338,7 @@ module.exports = function(webpackEnv) {
           ],
           include: paths.appSrc,
         },
-        // ocasta-react-scripts BEGIN : add tslint linter with same config as eslint
+        // ocasta-react-scripts BEGIN : add tslint linter as pre-loader with same config as eslint
         {
           test: /\.(ts|tsx)$/,
           enforce: 'pre',
@@ -349,6 +349,9 @@ module.exports = function(webpackEnv) {
                 // tslint errors are displayed by default as warnings
                 // set emitErrors to true to display them as errors
                 emitErrors: true,
+                // custom-tslint-formatters: display colour coded errors and warnings by file
+                formattersDirectory: 'node_modules/custom-tslint-formatters/formatters',
+                formatter: 'grouped',
               }
             },
           ],

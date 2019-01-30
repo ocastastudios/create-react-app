@@ -1,6 +1,6 @@
 {
   "name": "ocasta-react-scripts",
-  "version": "0.2.11",
+  "version": "0.2.12",
   "description": "Custom Ocasta configuration and scripts for Create React App.",
   "repository": "ocastastudios/create-react-app",
   "license": "MIT",
@@ -36,6 +36,7 @@
     "case-sensitive-paths-webpack-plugin": "2.1.2",
     "chalk": "2.4.1",
     "css-loader": "1.0.0",
+    "custom-tslint-formatters": "2.4.0",
     "dotenv": "6.0.0",
     "dotenv-expand": "4.2.0",
     "eslint": "5.6.0",
