@@ -1,3 +1,5 @@
+/* MM: disable eslint on serviceWorker which comes 100% from Facebook and we don't useCore */
+/* eslint-disable */
 // This optional code is used to register a service worker.
 // register() is not called by default.
 

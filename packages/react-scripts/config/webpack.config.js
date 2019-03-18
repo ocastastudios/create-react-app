@@ -275,6 +275,9 @@ module.exports = function(webpackEnv) {
         // Support React Native Web
         // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
         'react-native': 'react-native-web',
+        // ocasta-react-scripts BEGIN : allow imports without relative paths
+        AppSrc: paths.appSrc,
+        // ocasta-react-scripts END
       },
       plugins: [
         // Adds support for installing with Plug'n'Play, leading to faster installs and adding
@@ -309,14 +312,25 @@ module.exports = function(webpackEnv) {
           use: [
             {
               options: {
-                formatter: require.resolve('react-dev-utils/eslintFormatter'),
+                // ocasta-react-scripts BEGIN : enable .eslintrc config file in app
+                // try disable the custom error formatter, in case it's what causes them to show file by file only
+                // formatter: require.resolve('react-dev-utils/eslintFormatter'),
                 eslintPath: require.resolve('eslint'),
                 // @remove-on-eject-begin
-                baseConfig: {
-                  extends: [require.resolve('eslint-config-react-app')],
-                },
-                ignore: false,
-                useEslintrc: false,
+                // put your custom .eslintrc config file in the created app root and it will be picked up by webpack for linting
+                useEslintrc: true,
+                // Loader will process and report errors only and ignore warnings if this option is set to true
+                quiet: false,
+                // try force eslint to show all errors
+                emitError: true,
+                // https://github.com/webpack-contrib/eslint-loader
+                // If you're using hot module replacement, you may wish to enable this in development, or else updates will be skipped when there's an eslint error.
+                emitWarning: isEnvDevelopment,
+                // try to force webpack to show errrors for all files like when I configured it by hand. by default it seems to stop at first file with errors
+                failOnWarning: false,
+                // we don't want a production build with errors but we want the errors to show while developing
+                failOnError: isEnvProduction,
+                // ocasta-react-scripts END
                 // @remove-on-eject-end
               },
               loader: require.resolve('eslint-loader'),
@@ -324,6 +338,25 @@ module.exports = function(webpackEnv) {
           ],
           include: paths.appSrc,
         },
+        // ocasta-react-scripts BEGIN : add tslint linter as pre-loader with same config as eslint
+        {
+          test: /\.(ts|tsx)$/,
+          enforce: 'pre',
+          use: [
+            {
+              loader: 'tslint-loader',
+              options: {
+                // tslint errors are displayed by default as warnings
+                // set emitErrors to true to display them as errors
+                emitErrors: true,
+                // custom-tslint-formatters: display colour coded errors and warnings by file
+                formattersDirectory: 'node_modules/custom-tslint-formatters/formatters',
+                formatter: 'grouped',
+              }
+            },
+          ],
+        },
+        // ocasta-react-scripts END
         {
           // "oneOf" will traverse all following loaders until one will
           // match the requirements. When no loader matches it will fall
