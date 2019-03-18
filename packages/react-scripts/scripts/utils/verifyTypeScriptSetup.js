@@ -18,7 +18,9 @@ const immer = require('react-dev-utils/immer').produce;
 const globby = require('react-dev-utils/globby').sync;
 
 function writeJson(fileName, object) {
-  fs.writeFileSync(fileName, JSON.stringify(object, null, 2) + os.EOL);
+  // ocasta-react-scripts BEGIN : Fix line endings issues on windows
+  fs.writeFileSync(fileName, JSON.stringify(object, null, 2).replace(/\n/g, os.EOL) + os.EOL);
+  // ocasta-react-scripts END
 }
 
 function verifyNoTypeScript() {
